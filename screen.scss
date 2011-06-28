@@ -1,0 +1,20 @@
+/*  Sinter Framework
+    https://github.com/idangazit/sinter
+
+    Contains code by Joni Korpi, William Wells, Eric A. Meyer, Nathan Smith,
+    and Christopher M. Eppstein. See LICENSE.txt for full details.
+*/
+
+@import "compass/reset";
+@import "compass/utilities/general/clearfix";
+@import "compass/layout/grid-background"; 
+@import "compass/utilities/color/contrast";
+
+@import "sinter/framework";
+
+@import "partials/global";
+@import "partials/default_960";
+@import "partials/768";
+@import "partials/320";
+@import "partials/480";
+//@import "partials/high-px-ratio";

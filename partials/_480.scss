@@ -1,0 +1,6 @@
+/*  Landscape Mobile Layout: 480px. 6 columns, 10px outer padding.
+    Inherits styles from: Default Layout, 320px Layout.  */
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+    // @include grid(6) on something.
+}

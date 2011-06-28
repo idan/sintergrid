@@ -1,0 +1,101 @@
+/*  Sinter Framework
+    https://github.com/idangazit/sinter
+
+    Contains code by Joni Korpi, William Wells, Eric A. Meyer, Nathan Smith,
+    and Christopher M. Eppstein. See LICENSE.txt for full details.
+
+    Sinter provides a responsive, fixed grid, with 60px columns and 20px
+    gutters. It is intended to be used at the following dimensions:
+
+    320px:  4 columns = 300px + 10px padding
+    480px:  6 columns = 460px + 10px padding
+    768px:  9 columns = 700px + 34px padding
+    960px:  12 columns = 940px + 10px padding
+    1200px: 15 columns = 1180px + 10px padding
+    1280px: 16 columns = 1260px + 10px padding
+*/
+
+
+// Fundamental variables: you probably don't want to change these.
+
+$sinter-column-width: 60px;
+$sinter-gutter-width: 20px;
+
+
+// Math functions
+
+@function column-width($columns) {
+    @return ($less-column-width * $columns) + ($sinter-gutter-width * ($columns - 1));
+}
+
+@function grid-padding-px($columns) {
+    @if $columns == 9 {
+        // 768px layout :(
+        @return 34px;
+    } @else {
+        @return 10px;
+    }
+}
+
+@function input-width($columns, $border: 0, $padding: 0) {
+    @return column-width($columns) - (2 * $border) - (2 * $padding);
+}
+
+
+// The Grid
+
+@mixin grid($columns) {
+    @include clearfix;
+    width: column-width($columns);
+    padding-left: grid-padding-px($columns);
+    padding-right: grid-padding-px($columns);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@mixin columns($columns) {
+    display: inline; // IE6 double-margin fix.
+    float: left;     // This triggers block mode on normal browsers.
+    width: column-width($columns);
+    margin-right: $sinter-gutter-width / 2;
+    margin-left: $sinter-gutter-width / 2;
+}
+
+@mixin prefix($columns) {
+    padding-left: column-width($columns) + $sinter-gutter-width;
+}
+
+@mixin suffix($columns) {
+    padding-right: column-width($columns) + $sinter-gutter-width;
+}
+
+@mixin pad($columns) {
+    @include prefix($columns);
+    @include suffix($columns);
+}
+
+@mixin full($columns, $pad: 0) {
+    @include columns($columns);
+    @include pad($pad);
+}
+
+@mixin alpha { margin-left: 0; }
+@mixin omega { margin-right: 0; }
+
+
+// Toys
+
+@mixin sinter-grid-background($columns) {
+  @include column-grid-background(
+    $columns, $sinter-column-width, $sinter-gutter-width,
+    grid-padding-px($columns));
+}
+
+@mixin accessible-selection-color($color) {
+    $textcolor: contrast-color($color);
+    ::selection {background: $color; color: $textcolor;}
+    ::-moz-selection {background: $color; color: $textcolor;}
+    img::selection {background: transparent;}
+    img::-moz-selection {background: transparent;}
+    body {-webkit-tap-highlight-color: $color;}
+}
