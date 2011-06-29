@@ -25,7 +25,7 @@ $sinter-gutter-width: 20px;
 // Math functions
 
 @function column-width($columns) {
-    @return ($less-column-width * $columns) + ($sinter-gutter-width * ($columns - 1));
+    @return ($sinter-column-width * $columns) + ($sinter-gutter-width * ($columns - 1));
 }
 
 @function grid-padding-px($columns) {
