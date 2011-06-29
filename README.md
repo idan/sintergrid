@@ -38,7 +38,7 @@ What doesn't it do?
 
 Sinter does not supply any form of CSS reset. Compass provides several great mixins for that purpose.
 
-Anything relating to typography is unhandled by the framework. Compass provides some great facilities for vertical motion in type, there's no need to duplicate that work (poorly) in the grid system.
+Anything relating to typography is unhandled by the framework. Compass provides some great facilities for vertical motion in type, there's no need to duplicate that work in the grid system.
 
 
 What other cool features does it have?
@@ -46,7 +46,7 @@ What other cool features does it have?
 
 Honestly, read the source. There's really not much there.
 
-Some stuff I liked and cherry-picked:
+Some stuff I liked and wrote or cherry-picked:
 
 * Sass functions for computing column widths for when you need to add padding or a border to some element, as well as a specialized variant for input fields.
 * A background grid mixin, which utilizes Compass's [built-in CSS3 grid generator](http://compass-style.org/reference/compass/layout/grid_background/): `sinter-grid-background($columns)`.
@@ -60,7 +60,7 @@ In the future, this will probably become a proper Compass plugin. For now, the u
 
 * The `sinter` directory
 * The `partials` directory
-* screen.scss
+* `screen.scss`
 
 Avail yourself of the source until some proper documentation can be written.
 
@@ -74,7 +74,7 @@ I haven't tested anything yet. There's a fix for the IE6 double-margin bug which
 License?
 ========
 
-Short answer: BSD. Long answer: this reuses code from all over, so check out LICENSE.txt.
+Short answer: BSD. Long answer: this reuses code from all over, so check out `LICENSE.txt`.
 
 
 Contributors & Thanks
