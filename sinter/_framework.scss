@@ -74,13 +74,16 @@ $sinter-gutter-width: 20px;
     @include suffix($columns);
 }
 
+@mixin alpha { margin-left: 0; }
+@mixin omega { margin-right: 0; }
+
 @mixin full($columns, $pad: 0) {
     @include columns($columns);
     @include pad($pad);
+    @include alpha;
+    @include omega;
 }
 
-@mixin alpha { margin-left: 0; }
-@mixin omega { margin-right: 0; }
 
 
 // Toys
