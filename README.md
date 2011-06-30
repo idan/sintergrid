@@ -85,7 +85,7 @@ Sinter was... sintered together by Idan Gazit / @idangazit.
 No kidding, Sinter is 99% theirs and 1% mine. Thanks to:
 
 * Joni Korpi / @jonikorpi
-* William Wells
+* William Wells / @williamhanwells
 * Nathan Smith / @nathansmith
 * Chris Eppstein / @chriseppstein
 * Eric A. Meyer / @eriiicam
