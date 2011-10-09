@@ -18,8 +18,8 @@
 
 // Fundamental variables: you probably don't want to change these.
 
-$sinter-column-width: 60px;
-$sinter-gutter-width: 20px;
+$sinter-column-width: 60px !default;
+$sinter-gutter-width: 20px !default;
 
 
 // Math functions
