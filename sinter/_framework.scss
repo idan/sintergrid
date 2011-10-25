@@ -24,61 +24,60 @@ $sinter-gutter-width: 20px !default;
 
 // Math functions
 
-@function column-width($columns) {
-    @return ($sinter-column-width * $columns) + ($sinter-gutter-width * ($columns - 1));
+@function column-width($cols) {
+    @return ($sinter-column-width * $cols) + ($sinter-gutter-width * ($cols - 1));
 }
 
-@function grid-padding-px($columns) {
-    @if $columns == 9 {
-        // 768px layout :(
-        @return 34px;
+@function grid-padding-px($cols) {
+    @if $cols == 9 {
+        @return 34px; // 768px layout :(
     } @else {
         @return 10px;
     }
 }
 
-@function input-width($columns, $border: 0, $padding: 0) {
-    @return column-width($columns) - (2 * $border) - (2 * $padding);
+@function input-width($cols, $border: 0, $padding: 0) {
+    @return column-width($cols) - (2 * $border) - (2 * $padding);
 }
 
 
 // The Grid
 
-@mixin grid($columns) {
+@mixin grid($cols) { // the complete grid itself, centered
     @include clearfix;
-    width: column-width($columns);
-    padding-left: grid-padding-px($columns);
-    padding-right: grid-padding-px($columns);
+    width: column-width($cols);
+    padding-left: grid-padding-px($cols);
+    padding-right: grid-padding-px($cols);
     margin-left: auto;
     margin-right: auto;
 }
 
-@mixin columns($columns) {
+@mixin columns($cols) { // number of columns for the element
     display: inline; // IE6 double-margin fix.
     float: left;     // This triggers block mode on normal browsers.
-    width: column-width($columns);
+    width: column-width($cols);
     margin-right: $sinter-gutter-width / 2;
     margin-left: $sinter-gutter-width / 2;
 }
 
-@mixin prefix($columns) {
-    padding-left: column-width($columns) + $sinter-gutter-width;
+@mixin prefix($cols) { // $cols blank columns before the element
+    padding-left: column-width($cols) + $sinter-gutter-width;
 }
 
-@mixin suffix($columns) {
-    padding-right: column-width($columns) + $sinter-gutter-width;
+@mixin suffix($cols) { // $cols blank columns after the element
+    padding-right: column-width($cols) + $sinter-gutter-width;
 }
 
-@mixin pad($columns) {
-    @include prefix($columns);
-    @include suffix($columns);
+@mixin pad($cols) { // $cols blank columns on each side of the element
+    @include prefix($cols);
+    @include suffix($cols);
 }
 
-@mixin alpha { margin-left: 0; }
-@mixin omega { margin-right: 0; }
+@mixin alpha { margin-left: 0; } // no left gutter
+@mixin omega { margin-right: 0; } // no right gutter
 
-@mixin full($columns, $pad: 0) {
-    @include columns($columns);
+@mixin full($cols, $pad: 0) { // utility mixin
+    @include columns($cols);
     @include pad($pad);
     @include alpha;
     @include omega;
@@ -88,17 +87,25 @@ $sinter-gutter-width: 20px !default;
 
 // Toys
 
-@mixin sinter-grid-background($columns) {
+@mixin sinter-grid-background($cols) { // display the grid itself
   @include column-grid-background(
-    $columns, $sinter-column-width, $sinter-gutter-width,
-    grid-padding-px($columns));
+    $cols,
+    $sinter-column-width,
+    $sinter-gutter-width,
+    grid-padding-px($cols));
 }
 
-@mixin accessible-selection-color($color) {
+@mixin accessible-selection-color($color) { // get a contrasting color
     $textcolor: contrast-color($color);
-    ::selection {background: $color; color: $textcolor;}
-    ::-moz-selection {background: $color; color: $textcolor;}
-    img::selection {background: transparent;}
-    img::-moz-selection {background: transparent;}
-    body {-webkit-tap-highlight-color: $color;}
+    ::selection {
+        background: $color;
+        color: $textcolor;
+    }
+    ::-moz-selection {
+        background: $color;
+        color: $textcolor;
+    }
+    img::selection { background: transparent; }
+    img::-moz-selection { background: transparent; }
+    body { -webkit-tap-highlight-color: $color; }
 }

@@ -65,6 +65,72 @@ In the future, this will probably become a proper Compass plugin. For now, the u
 Avail yourself of the source until some proper documentation can be written.
 
 
+Quick overview
+==============
+
+Available mixins
+----------------
+
+* `grid($cols)`: the complete grid itself, centered
+* `columns($cols)`: number of columns for the element
+* `prefix($cols)`: blank columns before the element
+* `suffix($cols)`: blank columns after the element
+* `pad($cols)`: blank columns on each side of the element
+* `alpha`: no left gutter
+* `omega`: no right gutter
+* `full($cols, $pad)`: utility mixin
+* `sinter-grid-background($cols)`: display the grid itself (for debugging purposes)
+* `accessible-selection-color($color)`: get a contrasting color
+
+Sample
+------
+
+Here's an example usage for a blog layout:
+
+                   ------++------++------++------++------++------++------++------++------++------++------++------
+                                   +------------------------------------------------------------+
+             full(8,2)------------>|                                                            |
+                                   |                        SINTER  DEMO                        |
+                                   |                                                            |
+            columns(6)-------------------+                                               +---------------columns(2)
+            alpha                  |     v                                               v      |        omega
+                                   +--------------------------------------------+  +------------+
+                                   |Nav 1   Nav 2   Nav 3   Nav 4   Nav 5       |  |       Login|
+                                   +--------------------------------------------+  +------------+
+                                   |                                                            |
+                                   |                                                            |
+                                   +------------------------------------------------------------+
+                   +------------+---------------------------------------------------------------+  +------------+
+                   | MetaData   |  . Blog post title                                            |  | Sidebar    |
+                   |            |  .                                                            |  |            |
+                   |  Author    |  . some content                                               |  |   tag1     |
+      columns(2)-->|  Date      |  .                                                            |  |   tag2     |
+      alpha        |  Category  |  .                                                            |  |   tag3     |
+      omega        |  Tags      |  .                                                            |  |   tag4     |
+                   +------------+  .                                                            |  |   tag5     |
+                   |               .                                                            |  |            |
+                   |               .                columns(10)                                 |  | Blogroll   |
+                   |               .                alpha                                       |  |   stuff    |
+                   |               .<---------------------------------------------------------->|  |   foo      |
+                   |               .                                                            |  +------------+
+                   |  prefix(2)    .                                                            |         ^
+                   |<------------->.                                                            |         |
+                   |               .                                                            |         |
+                   +----------------------------------------------------------------------------+         |
+                                                                                                      columns(2)
+                                                                                                      omega
+                   
+                   
+                                           +--------------------------------------------+
+                           full(6,3)------>| Footer, Copyright, stuff                   |
+                                           +--------------------------------------------+
+                   ------++------++------++------++------++------++------++------++------++------++------++------
+
+Legend:
+
+* one char represents 10 pixels
+* +------+ represents 10px gutter, 60px column, 10px gutter
+
 What browsers are supported?
 ============================
 
