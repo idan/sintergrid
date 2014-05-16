@@ -12,9 +12,9 @@
 
 @import "sinter/framework";
 
-@import "partials/global";
-@import "partials/default_960";
-@import "partials/768";
-@import "partials/320";
-@import "partials/480";
-//@import "partials/high-px-ratio";
+@import "partials/global"; // the place to put your global definitions (colors, fonts...)
+@import "partials/default_960"; // desktops
+@import "partials/768"; // tablets (iPads and others)
+@import "partials/320"; // mobiles
+@import "partials/480"; // landscape on mobiles
+@import "partials/high-px-ratio"; // retina displays (iPhone 4 and above)
